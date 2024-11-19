@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture/features/daily_news/presentation/bloc/remote/remote_article_bloc.dart';
+import 'package:flutter_clean_architecture/features/daily_news/presentation/pages/detail/article_detail.dart';
 import 'package:flutter_clean_architecture/injection_container.dart';
 
 class DailyNewsPage extends StatelessWidget {
@@ -27,9 +28,18 @@ class DailyNewsPage extends StatelessWidget {
                 itemCount: state.articles!.length,
                 itemBuilder: (context, index) {
                   final article = state.articles![index];
+
                   return ListTile(
                     title: Text(article.title ?? 'No Title'),
                     subtitle: Text(article.content ?? 'No Content'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ArticleDetail(article: article),
+                        ),
+                      );
+                    },
                   );
                 },
               );

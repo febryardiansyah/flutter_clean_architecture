@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_clean_architecture/features/daily_news/data/models/article_model.dart';
 
 class ArticleEntity extends Equatable {
   final int? id;
