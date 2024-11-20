@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture/features/daily_news/presentation/bloc/remote/remote_article_bloc.dart';
 import 'package:flutter_clean_architecture/features/daily_news/presentation/pages/detail/article_detail.dart';
+import 'package:flutter_clean_architecture/features/daily_news/presentation/pages/saved/saved_article.dart';
 import 'package:flutter_clean_architecture/injection_container.dart';
 
 class DailyNewsPage extends StatelessWidget {
@@ -12,6 +13,19 @@ class DailyNewsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Daily News'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.bookmark),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const SavedArticlePage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: BlocProvider(
         create: (_) => sl<RemoteArticleBloc>()..add(const GetArticlesEvent()),
@@ -36,7 +50,7 @@ class DailyNewsPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ArticleDetail(article: article),
+                          builder: (_) => ArticleDetailPage(article: article),
                         ),
                       );
                     },
