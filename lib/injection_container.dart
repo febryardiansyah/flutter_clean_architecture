@@ -14,7 +14,9 @@ import 'features/daily_news/data/data_sources/local/app_database.dart';
 
 final sl = GetIt.instance;
 
-Future<void> registerInjection() async {
+Future<void> registerInjection({bool isUnitTest = false}) async {
+  if (isUnitTest) await sl.reset();
+
   final database =
       await $FloorAppDatabase.databaseBuilder('app_database.db').build();
   sl.registerSingleton<AppDatabase>(database);

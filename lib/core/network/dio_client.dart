@@ -2,21 +2,22 @@ import 'package:dio/dio.dart';
 import 'package:flutter_clean_architecture/core/constants/constants.dart';
 import 'package:flutter_clean_architecture/core/network/dio_interceptor.dart';
 
-
 class DioClient {
   late Dio _dio;
 
-  DioClient() {
-    _dio = Dio(
-      BaseOptions(
-        baseUrl: newsApiBaseUrl,
-        receiveTimeout: const Duration(minutes: 1),
-        connectTimeout: const Duration(minutes: 1),
-      ),
-    );
+  DioClient({Dio? dio}) {
+    _dio = dio ?? _createDio();
 
     // _dio.interceptors.add(DioInterceptor());
   }
+
+  Dio _createDio() => Dio(
+        BaseOptions(
+          baseUrl: newsApiBaseUrl,
+          receiveTimeout: const Duration(minutes: 1),
+          connectTimeout: const Duration(minutes: 1),
+        ),
+      );
 
   Future<Response> get(
     String path, {
