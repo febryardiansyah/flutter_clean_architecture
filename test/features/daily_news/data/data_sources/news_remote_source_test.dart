@@ -6,7 +6,8 @@ import 'package:flutter_clean_architecture/features/daily_news/data/models/artic
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../helpers/mock_test.dart';
+import '../../../../helpers/json_reader.dart';
+import '../../../../helpers/mock_test.dart';
 
 void main() {
   late MockDio mockDio;
@@ -26,7 +27,7 @@ void main() {
         queryParameters: _params,
       ),
       statusCode: 200,
-      data: _articles,
+      data: articleListDummyResponse,
     );
     final responseEmptyData = Response(
       requestOptions: RequestOptions(
@@ -111,21 +112,6 @@ void main() {
     );
   });
 }
-
-const _articles = {
-  'articles': [
-    {
-      'id': 1,
-      'author': 'author',
-      'title': 'title',
-      'description': 'description',
-      'url': 'url',
-      'urlToImage': 'urlToImage',
-      'publishedAt': 'publishedAt',
-      'content': 'content',
-    }
-  ]
-};
 
 const _emptyArticles = {'articles': []};
 const _params = {
