@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:floor/floor.dart';
 import 'package:flutter_clean_architecture/core/constants/constants.dart';
 import 'package:flutter_clean_architecture/core/resources/data_state.dart';
 import 'package:flutter_clean_architecture/features/daily_news/data/data_sources/local/app_database.dart';
@@ -14,8 +13,6 @@ import 'package:mocktail/mocktail.dart';
 import '../../../../helpers/json_reader.dart';
 
 class MockNewsRemoteDataSource extends Mock implements NewsRemoteSource {}
-
-class MockFloorDatabase extends Mock implements FloorDatabase {}
 
 class MockArticleDao extends Mock implements ArticleDao {}
 

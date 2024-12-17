@@ -10,6 +10,7 @@ import 'package:flutter_clean_architecture/features/daily_news/domain/repositori
 class ArticleRepostioryImpl implements ArticleRepository {
   final NewsRemoteSource _newsApiService;
   final AppDatabase _appDatabase;
+  
   const ArticleRepostioryImpl(this._newsApiService, this._appDatabase);
 
   @override
